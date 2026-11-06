@@ -37,4 +37,4 @@ async function checkAI(){const status=$("chatstatus");if(needsLocalServer()){sta
 async function sendQuestion(){const input=$("ask"),q=input.value.trim();if(!q)return;if(needsLocalServer()){bubble(serverPreviewMessage(),"ai");return}input.value="";bubble(q,"me");const wait=bubble(lang==="si"?"OpenAI වෙතින් පිළිතුරක් ලබාගනිමින්...":"Getting an answer from OpenAI...","ai");try{const r=await fetch("/api/chat",{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({question:q,language:lang})});const d=await r.json();if(!r.ok)throw new Error(d.error||`Server error (${r.status})`);wait.textContent=d.answer||"No answer returned."}catch(e){wait.textContent=(lang==="si"?"AI දෝෂය: ":"AI error: ")+e.message;checkAI()}}
 $("ask").addEventListener("keydown",e=>{if(e.key==="Enter")sendQuestion()});
 renderFilters();renderCards();
-</script></body></html>
+</script></body></html><meta name="google-site-verification" content="I8Xbz2fz9Ogyf64Fe9MB3fl4tyblVteNPeKLG8UdJrM" />
